@@ -14,7 +14,12 @@
   Then alert your name using dot notation.
 */
 
-//Code here
+const me = {
+  name: 'Emily',
+  age: 26
+}
+
+// alert(me.name);
 
 /// ////////////// PROBLEM 2 ///////////////////
 
@@ -23,21 +28,30 @@
   Have the values to those keys be strings that are equal to your favorite thing in that category.
 */
 
-//Code here
+const favoriteThings = {
+  band: 'Bleachers',
+  food: 'Mac and cheese',
+  person: 'Rachel',
+  book: 'If We Were Villains',
+  movie: 'The Prince of Egypt',
+  holiday: 'Thanksgiving',
+}
 
 /*
   After you've made your object, use bracket or dot notation to add another key named 'car' with the value being your favorite car
   and then another key named 'brand' with the value being your favorite brand.
 */
 
-//Code here
+favoriteThings.car = 'Subaru';
+favoriteThings.brand = 'Walmart';
 
 /*
   Now use bracket or dot notation to change the value of the food key in your favoriteThings object to be 'Chicken Nuggets'
   and change the value of the book key in your favoriteThings object to be 'Harry Potter'.
 */
 
-//Code here
+favoriteThings.food = 'Chicken Nuggets';
+favoriteThings.book = 'Harry Potter';
 
 /// ////////////// PROBLEM 3 ///////////////////
 
@@ -58,7 +72,8 @@ const user2 = {
   Make that change without editing the code above.
 */
 
-//Code Here
+user2.name = 'Bryan G. Smith';
+user2.email = 'bryan.smith@devmounta.in';
 
 /// ////////////// PROBLEM 4 ///////////////////
 
@@ -69,7 +84,9 @@ let shoppingCart = {};
   It should add a new key-value pair to the cart with the item and quantity.
 */
 
-//Code Here
+function addToCart(item, quantity) {
+  shoppingCart[item] = quantity;
+}
 
 /// ////////////// PROBLEM 5 ///////////////////
 
@@ -79,7 +96,14 @@ let shoppingCart = {};
   Return the updated object.
 */
 
-//Code Here
+function greaterThan10(obj) {
+  for (const value in obj) {
+    if (obj[value] > 10) {
+      obj[value] = 0;
+    }
+  }
+  return obj;
+}
 
 /// ////////////// PROBLEM 6 ///////////////////
 
@@ -89,7 +113,12 @@ let shoppingCart = {};
   Return the updated object.
 */
 
-//Code Here
+function double(obj) {
+  for (const value in obj) {
+    obj[value] *= 2;
+  }
+  return obj;
+}
 
 /// ////////////// PROBLEM 7 ///////////////////
 
@@ -98,7 +127,11 @@ let shoppingCart = {};
 */
 
 function showValues(obj) {
-  //Code Here
+  let string = "";
+  for (const value in obj) {
+    string += obj[value];
+  };
+  return string;
 }
 
 /// ////////////// PROBLEM 8 ///////////////////
@@ -109,7 +142,14 @@ function showValues(obj) {
   Return that object so that whenever you invoke makeCard, you get a brand new credit card.
 */
 
-//Code Here
+function makeCard(cardNumber, expirationDate, securityCode) {
+  const creditCard = {
+    cardNumber: cardNumber,
+    expirationDate: expirationDate,
+    securityCode: securityCode
+  };
+  return creditCard;
+}
 
 /// ////////////// PROBLEM 9 ///////////////////
 
@@ -118,7 +158,10 @@ function showValues(obj) {
   Delete the property password and return the object.
 */
 
-//Code Here
+function removePassword(obj) {
+  delete obj['password'];
+  return obj;
+}
 
 /// ////////////// PROBLEM 10 ///////////////////
 
@@ -135,7 +178,11 @@ const deleteTheBigNumbers = {
   Write a for...in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
+for (const key in deleteTheBigNumbers) {
+  if (deleteTheBigNumbers[key] > 100) {
+    delete deleteTheBigNumbers[key];
+  }
+}
 
 /*
   Once you complete a problem, refresh ./destructuring.html in your browser and check to see if the problem's test(s) are passing.
@@ -160,7 +207,7 @@ const carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables.
 */
 
-//Code Here
+const { color, make, model, year } = carDetails;
 
 /// ////////////// PROBLEM 12 ///////////////////
 
@@ -171,7 +218,7 @@ const carDetails = {
 */
 
 function greeting(obj) {
-  //Code Here
+  const { firstName, lastName, title } = obj;
 
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -188,7 +235,10 @@ function greeting(obj) {
   Sum up the values and return the total number.
 */
 
-//Code Here
+function totalPopulation(obj) {
+  const { utah, california, texas, arizona } = obj;
+  return utah + california + texas + arizona;
+}
 
 /// ////////////// PROBLEM 14 ///////////////////
 
@@ -200,7 +250,14 @@ function greeting(obj) {
   Return false otherwise.
 */
 
-//Code Here
+function usCanadaBorder(arr) {
+  const [ latitude, longitude ] = arr;
+  if (latitude === 49 && longitude >= -123 && longitude <= -95) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 /// ////////////// PROBLEM 15 ///////////////////
 
@@ -246,7 +303,16 @@ const employees = [
     3. Return the updated employee array.
 */
 
-//Code Here
+function employeeUpdater() {
+  for (let i = 0; i < employees.length; i++) {
+    if (employees[i].firstName === 'Theo') {
+      employees.splice(i, 1);
+    } else if (employees[i].firstName === 'Lorie') {
+      employees[i].department = 'HR';
+    }
+  }
+  return employees;
+}
 
 /// ////////////// PROBLEM 16 ///////////////////
 
@@ -273,8 +339,8 @@ const cat = {
 */
 
 //Code Here
-let grumpyActivity;
-let fluffy2ndFriend;
+let grumpyActivity = cat.catFriends[0]['activities'][1];
+let fluffy2ndFriend = cat.catFriends[1]['name'];
 
 /// ////////////// PROBLEM 17 ///////////////////
 
@@ -312,7 +378,11 @@ const myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
+function recordCleaner() {
+  for (i = 0; i < myCar['accidents'].length; i++) {
+    myCar['accidents'][i]['atFaultForAccident'] = false;
+  }
+}
 
 /// ////////////// PROBLEM 18 ///////////////////
 
@@ -330,7 +400,15 @@ const myCar = {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
+function largeNumbers( {first, second, third} ) {
+  if (first < second && first < third) {
+    return first;
+  } else if (second < first && second < third) {
+    return second;
+  } else {
+    return third;
+  }
+}
 
 /// ////////////// PROBLEM 19 ///////////////////
 
@@ -340,4 +418,12 @@ const myCar = {
   Find the longest array and return that array.
 */
 
-//Code Here
+function numberGroups( {a, b, c} ) {
+  if (a.length > b.length && a.length > c.length) {
+    return a;
+  } else if (b.length > a.length && b.length > c.length) {
+    return b;
+  } else {
+    return c;
+  }
+}
